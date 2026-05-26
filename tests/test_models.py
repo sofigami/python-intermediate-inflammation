@@ -75,7 +75,8 @@ def test_daily_mean_noniterable():
         "test_input, test_result",
         [
             ([[0, 0], [0, 0], [0, 0]], [0, 0]),
-            ([[1, 2], [3, 4], [5, 6]], [3, 4])
+            ([[1, 2], [3, 4], [5, 6]], [3, 4]),
+            (np.zeros((3, 5)), np.zeros((5)))
         ]
 )
 
