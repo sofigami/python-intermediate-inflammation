@@ -18,7 +18,7 @@ def load_csv(filename):
     return np.loadtxt(fname=filename, delimiter=',')
 
 
-def daily_mean(data):
+def daily_mean(data:np.array) -> np.array:
     """Calculate the daily mean of a 2d inflammation data array."""
     return np.mean(data, axis=0)
 
