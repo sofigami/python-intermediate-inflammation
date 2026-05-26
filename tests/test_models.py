@@ -62,6 +62,7 @@ def test_daily_max_empty_array():
 
 
 def test_daily_max_nan_propagation():
+    """Test that daily_max select NaN as maximum value."""
     data = np.array([[1, np.nan], [3, 4]])
     result = daily_max(data)
     assert np.isnan(result[1])  # documents current behavior
@@ -90,7 +91,11 @@ def test_daily_mean_noniterable():
     ],
 )
 def test_daily_mean(test_input, test_result):
-    """Test that mean function works for both zeros and integers"""
+    """Test that mean function works for both zeros and integers
+
+    :param test_input: array of all zeros, array of positive integers, array of all zeros
+    :param test_result: array containing mean value per column
+    """
 
     npt.assert_array_equal(daily_mean(test_input), test_result)
 
@@ -109,7 +114,11 @@ def test_daily_mean(test_input, test_result):
     ],
 )
 def test_daily_max(test_input, test_result):
-    """Test that max function works for both zeros and integers"""
+    """Test that mean function works for both zeros and integers
+
+    :param test_input: array of all zeros, array of positive integers, array of all zeros, zeros in multiple ways
+    :param test_result: array containing max value per column
+    """
 
     npt.assert_array_equal(daily_max(test_input), test_result)
 
@@ -124,5 +133,10 @@ def test_daily_max(test_input, test_result):
     ],
 )
 def test_daily_min(test_input, test_result):
-    """Test that min function works for an array of positive and negative integers."""
+    """Test that min function works for an array of positive and negative integers.
+
+    :param test_input: array of all zeros, array of positive and negative integers, array containing zeros, array with all elements equal
+    :param test_result: array containing min value per column
+    """
+
     npt.assert_array_equal(daily_min(test_input), test_result)
