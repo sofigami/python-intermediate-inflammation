@@ -3,7 +3,8 @@
 import numpy as np
 import numpy.testing as npt
 
-from inflammation.models import daily_mean
+from inflammation.models import daily_mean, daily_max
+from inflammation.models import daily_min
 
 def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
@@ -28,4 +29,26 @@ def test_daily_mean_integers():
 
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(daily_mean(test_input), test_result)
+
+def test_daily_max_real_numbers():
+    """Test that max function works for an array of real numbers."""
+
+    test_input = np.array([[1, -2, 6],
+                           [3.17, 4, 5.2],
+                           [5, 6.0, 4]])
+    test_result = np.array([5, 6, 6])
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(daily_max(test_input), test_result)
+
+def test_daily_min_real_numbers():
+    """Test that min function works for an array of real numbers."""
+
+    test_input = np.array([[1, -2, 6],
+                           [3.17, 4, 5.2],
+                           [5, 6.0, 4]])
+    test_result = np.array([1, -2, 4])
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(daily_min(test_input), test_result)
 
