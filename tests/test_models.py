@@ -59,6 +59,16 @@ def test_daily_max_string():
     with pytest.raises(TypeError):
         error_expected = daily_max(['Hello', 'there'])
 
+def test_daily_max_empty_array():
+    """Test that daily_max raises ValueError when given an empty array."""
+    with pytest.raises(ValueError):
+        daily_max([])
+
+def test_daily_max_nan_propagation():
+    data = np.array([[1, np.nan], [3, 4]])
+    result = daily_max(data)
+    assert np.isnan(result[1])  # documents current behavior
+
 def test_daily_mean_string():
     """ Test for TypeError when parsing strings"""
 
