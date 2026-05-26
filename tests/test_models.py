@@ -70,3 +70,16 @@ def test_daily_mean_noniterable():
 
     with pytest.raises(IndexError):
         error_expected = daily_mean(3)
+
+@pytest.mark.parametrize(
+        "test_input, test_result",
+        [
+            ([[0, 0], [0, 0], [0, 0]], [0, 0]),
+            ([[1, 2], [3, 4], [5, 6]], [3, 4])
+        ]
+)
+
+def test_daily_mean(test_input, test_result):
+    """ Test that mean function works for both zeros and integers"""
+
+    npt.assert_array_equal(daily_mean(test_input), test_result)
