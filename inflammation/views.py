@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 
-def visualize(data_dict):
+def visualize(data_dict, outfile):
     """Display plots of basic statistical properties of the inflammation data.
 
     :param data_dict: Dictionary of name -> data to plot
@@ -22,4 +22,7 @@ def visualize(data_dict):
 
     fig.tight_layout()
 
-    plt.show()
+    if outfile:
+        plt.savefig(outfile)
+    else:
+        plt.show()
