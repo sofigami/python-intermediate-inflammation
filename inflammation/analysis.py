@@ -48,7 +48,7 @@ def analyse_data(data_source):
     data = data_source.load_inflammation_data()
     
     daily_standard_deviation = compute_standard_deviation_by_day(data)
-    
+
     graph_data = {
         'standard deviation by day': daily_standard_deviation,
     }
@@ -81,4 +81,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     # Run the function using the provided argument
-    analyse_data(args.data_dir)
+    data_source = CSVDataSource(args.data_dir)
+    analyse_data(data_source)
